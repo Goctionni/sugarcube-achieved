@@ -125,6 +125,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   display: flex;
   flex-direction: column;
   gap: 1em;
+  z-index: 50;
 }
 
 .achievement {
@@ -229,7 +230,9 @@ const checkAchievements = () => {
 };
 
 $(document).on(':passageend', checkAchievements);
-$(document).on('mouseup', checkAchievements);
+$(document).on('mouseup', () => {
+  setTimeout(checkAchievements, 100);
+});
 
 Macro.add('achieve', {
   handler() {
